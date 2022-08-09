@@ -64,6 +64,7 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
+    "rest_framework_simplejwt",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -279,10 +280,12 @@ SOCIALACCOUNT_FORMS = {"signup": "redvot.users.forms.UserSocialSignupForm"}
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
