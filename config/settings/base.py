@@ -5,10 +5,18 @@ from pathlib import Path
 
 import environ
 
+env = environ.Env()
+environ.Env.read_env()
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env(
+    'SECRET_KEY',
+    default="8CqSy9oQ4u4luxWUHiUM016oB7e7mqJhXm0Z9zf6TsQvFVy8o7iJG4tzru6JeXxd"
+    )
+
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # redvot/
 APPS_DIR = ROOT_DIR / "redvot"
-env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
@@ -65,6 +73,7 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
     "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -81,6 +90,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "redvot.users",
+    "redvot.login"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -305,3 +315,7 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+JWT_SECRET_KEY = env(
+    "JWT_SECRET_KEY",
+    default="8CqSy9oQ4u4luxWUHiUM016oB7e7mqJhXm0Z9zf6TsQvFVy8o7iJG4tzru6JeXxd",
+    )

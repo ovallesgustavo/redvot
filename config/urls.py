@@ -5,16 +5,15 @@ from django.urls import include, path, re_path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
-    TokenRefreshView, 
-    TokenVerifyView
+    TokenRefreshView,
+    TokenVerifyView,
 )
-
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(

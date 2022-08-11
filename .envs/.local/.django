@@ -2,3 +2,6 @@
 # ------------------------------------------------------------------------------
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
+JWT_SECRET_KEY=8CqSy9oQ4u4luxWUHiUM016oB7e7mqJhXm0Z9zf6TsQvFVy8o7iJG4tzru6JeXxd
+SECRET_KEY=8CqSy9oQ4u4luxWUHiUM016oB7e7mqJhXm0Z9zf6TsQvFVy8o7iJG4tzru6JeXxd
+

@@ -1,15 +1,10 @@
-from django.conf import settings
-from rest_framework.routers import DefaultRouter, SimpleRouter
+from redvot.common.default_router import DefaultRouter
+from redvot.login.urls import router as login
 
-from redvot.users.api.views import UserViewSet
+# if settings.DEBUG:
+main_router = DefaultRouter()
 
-if settings.DEBUG:
-    router = DefaultRouter()
-else:
-    router = SimpleRouter()
+main_router.extend(login)
 
-router.register("users", UserViewSet)
-
-
-app_name = "api"
-urlpatterns = router.urls
+app_name = "redvot"
+urlpatterns = main_router.urls
